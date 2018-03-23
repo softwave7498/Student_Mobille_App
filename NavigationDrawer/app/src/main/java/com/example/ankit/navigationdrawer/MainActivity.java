@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        displaySelectedScreen(R.id.nav_dashboard);
+        displaySelectedScreen(R.id.dashboard);
     }
 
     @Override
@@ -73,6 +73,17 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_logout:
                 fragment=new logout();
+                break;
+            case R.id.nav_library:
+                fragment=new library();
+                break;
+
+            case R.id.nav_document:
+                fragment=new document();
+                break;
+
+            case R.id.nav_academics:
+                fragment=new academics();
                 break;
         }
         if(fragment!=null){

@@ -5,19 +5,19 @@ package com.example.ankit.navigationdrawer;
  */
 
 public class Event {
-    public String eTitle;
-    public String eDescription;
-    public String eImgurl;
-    public String eId;
+    String eTitle;
+    String eDescription;
+    String eImgurl;
+    String eId;
     public void Event(){
 
     }
 
-    public Event(String eTitle, String eDescription, String eImgurl,String eId) {
+    public Event(String eTitle, String eDescription, String eImgurl, String eId) {
         this.eTitle = eTitle;
         this.eDescription = eDescription;
         this.eImgurl = eImgurl;
-        this.eId=eId;
+        this.eId = eId;
     }
 
     public String geteTitle() {
@@ -29,5 +29,6 @@ public class Event {
     }
 
     public String geteImgurl(){return eImgurl;}
-    public String geteId(){return eId;}
+
+    public String geteId(){return eImgurl;}
 }

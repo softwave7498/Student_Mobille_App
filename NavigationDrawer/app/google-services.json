@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "334180008112-8fbv89hlemib3hnm021ql4jjdnf8qupd.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.ankit.navigationdrawer",
-            "certificate_hash": "a14eb98ac1b0a714ee8aaf2c641183e1c743770c"
-          }
-        },
-        {
           "client_id": "334180008112-lq4670v2gbnqd44m6ehea1o93p3fp8ui.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

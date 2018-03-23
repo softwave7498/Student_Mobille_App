@@ -22,8 +22,8 @@ import ss.com.bannerslider.views.BannerSlider;
 
 public class dashboard extends Fragment {
     private List<Event> eventList;//List to hold products
-    DatabaseReference mDataRef;
-    RecyclerView recyclerView;
+    private DatabaseReference mDataRef;
+    RecyclerView recyclerViewEvents;
     EventAdapter adapter;//adapter to link products
 
     @Nullable
@@ -38,13 +38,14 @@ public class dashboard extends Fragment {
         banners.add(new DrawableBanner(R.drawable.one));
         banners.add(new DrawableBanner(R.drawable.two));
         banners.add(new DrawableBanner(R.drawable.three));
+        banners.add(new DrawableBanner(R.drawable.four));
         bannerSlider.setBanners(banners);
 
         //Event card data
         eventList = new ArrayList<>();
-        recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewEvents = view.findViewById(R.id.recyclerViewEvents);
+        recyclerViewEvents.setHasFixedSize(true);
+        recyclerViewEvents.setLayoutManager(new LinearLayoutManager(getContext()));
         //creating recyclerview adapter
         mDataRef = FirebaseDatabase.getInstance().getReference().child("Events");
         mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -58,7 +59,7 @@ public class dashboard extends Fragment {
                     eventList.add(new Event(title,desc,img,id));
                 }
                 adapter = new EventAdapter(getContext(),eventList);
-                recyclerView.setAdapter(adapter);
+                recyclerViewEvents.setAdapter(adapter);
             }
 
             @Override
@@ -70,7 +71,7 @@ public class dashboard extends Fragment {
         final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         mLayoutManager.setReverseLayout(true);
         mLayoutManager.setStackFromEnd(true);
-        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerViewEvents.setLayoutManager(mLayoutManager);
         return view;
 
     }
@@ -84,82 +85,3 @@ public class dashboard extends Fragment {
 
     }
 }
-
-
-
-/*
-FirebaseUser user;
-    DatabaseReference databaseReference;
-    TextView text;
-    public SwipeRefreshLayout swipeRefreshLayout;
-    ProgressDialog progressDialog;
-
-    List<Blog> list = new ArrayList<>();
-    List<String> stringList = new ArrayList<>();
-
-    RecyclerView recyclerView ;
-
-    RecyclerView.Adapter adapter ;
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        text = (TextView)findViewById(R.id.delete);
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-
-        recyclerView.setHasFixedSize(true);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
-
-
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("root").child("Blog");
-
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-
-                    Blog blog = dataSnapshot.getValue(Blog.class);
-                    String s = dataSnapshot.getKey();
-                    stringList.add(s);
-                    list.add(blog);
-
-                }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-                progressDialog.dismiss();
-            }
-
-
-        });
-
-        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
-        mLayoutManager.setReverseLayout(true);
-        mLayoutManager.setStackFromEnd(true);
-        recyclerView.setLayoutManager(mLayoutManager);
-
-        BottomNavigationViewEx navigation = (BottomNavigationViewEx) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigation.enableAnimation(false);
-        navigation.enableShiftingMode(false);
-        navigation.enableItemShiftingMode(false);
-        navigation.setIconSize(56,36);
-        navigation.setTextSize(0);
-
-
-
-    }
-
-            return false;
-        }
-    };
- */
