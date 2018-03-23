@@ -3,7 +3,6 @@ package com.example.ankit.navigationdrawer;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,8 +40,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     public EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflating and returning our view holder
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.layout_events, null);
-        return new EventViewHolder(view,mCtx);
+        View view = inflater.inflate(R.layout.layout_events,parent,false);
+        return new EventViewHolder(view);
     }
 
     @Override
@@ -57,7 +56,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.textViewShortDesc.setText(event.geteDescription());
         Glide.with(mCtx.getApplicationContext()).load(String.valueOf(event.geteImgurl())).into(holder.imageView);
 
-
     }
 
 
@@ -71,33 +69,29 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
         TextView textViewTitle, textViewShortDesc;
         ImageView imageView;
-        Context ctx;
-        public EventViewHolder(final View itemView,Context c) {
+
+        public EventViewHolder(final View itemView) {
             super(itemView);
-            this.ctx=c;
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
             textViewShortDesc = itemView.findViewById(R.id.textViewShortDesc);
             imageView = itemView.findViewById(R.id.imageView);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Fragment BlankFragment = new BlankFragment();
-                    Toast.makeText(ctx, "Button Pressed", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ctx, "Button Pressed", Toast.LENGTH_SHORT).show();
                     Event event = eventList.get(getLayoutPosition());
-                    Intent intentBundle = new Intent(mCtx,BlankFragment.class);
+                    Intent intentBundle = new Intent(mCtx,DisplayEvent.class);
                     Bundle bundle = new Bundle();
-                    bundle.putString("eId",event.geteId());
-                    bundle.putString("etitle",event.geteTitle());
-                    bundle.putString("eDescription",event.geteDescription());
-                    bundle.putString("eImage",event.geteImgurl());
-                    Toast.makeText(ctx, "Button Pressed", Toast.LENGTH_SHORT).show();
-                    //ctx.startActivity(intentBundle);
-                    BlankFragment.setArguments(bundle);
-
+                    intentBundle.putExtra("eId",event.geteId());
+                    intentBundle.putExtra("etitle",event.geteTitle());
+                    intentBundle.putExtra("eDescription",event.geteDescription());
+                    intentBundle.putExtra("eImage",event.geteImgurl());
+                    //Toast.makeText(mCtx, "Button Pressed", Toast.LENGTH_SHORT).show();
+                    mCtx.startActivity(intentBundle);
                 }
             });
         }
-    }
 
+    }
 }
 
