@@ -82,6 +82,10 @@ public class MainActivity extends AppCompatActivity
                 fragment=new document();
                 break;
 
+            case R.id.nav_chat:
+                fragment=new chatting();
+                break;
+
             case R.id.nav_academics:
                 fragment=new academics();
                 break;
