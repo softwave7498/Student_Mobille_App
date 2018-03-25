@@ -1,4 +1,4 @@
-package com.example.ankit.navigationdrawer;
+package com.example.ankit.navigationdrawer.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,8 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.ankit.navigationdrawer.LibraryClass;
+import com.example.ankit.navigationdrawer.R;
+
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Ankit on 10-03-2018.
