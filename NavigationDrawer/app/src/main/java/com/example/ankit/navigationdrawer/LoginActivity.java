@@ -138,12 +138,21 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                         String Number = (String) credentials.child("Mobile_number").getValue();
                         if (Number.equals(number.getText().toString())) {
                             Toast.makeText(LoginActivity.this,"success beta",Toast.LENGTH_LONG).show();
+<<<<<<< HEAD
                         }
                     } else if (status == 2) {
                         String Number = (String) credentials.child("F_Mobile_number").getValue();
                         if (Number.equals(number.getText().toString())) {
                             Toast.makeText(LoginActivity.this,"success papa",Toast.LENGTH_LONG).show();
                         }
+=======
+                        }
+                    } else if (status == 2) {
+                        String Number = (String) credentials.child("F_Mobile_number").getValue();
+                        if (Number.equals(number.getText().toString())) {
+                            Toast.makeText(LoginActivity.this,"success papa",Toast.LENGTH_LONG).show();
+                        }
+>>>>>>> 77676bc67b45356c0572e59dca2b6f92891302d3
                     }
 
                 }

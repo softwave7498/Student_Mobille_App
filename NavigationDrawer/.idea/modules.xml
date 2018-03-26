@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/NavigationDrawer.iml" filepath="$PROJECT_DIR$/NavigationDrawer.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+=======
+      <module fileurl="file://E:\AndroidProjects\NavigationDrawer\NavigationDrawer.iml" filepath="E:\AndroidProjects\NavigationDrawer\NavigationDrawer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\AndroidProjects\NavigationDrawer\app\app.iml" filepath="E:\AndroidProjects\NavigationDrawer\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sih.iml" filepath="$PROJECT_DIR$/sih.iml" />
+>>>>>>> 77676bc67b45356c0572e59dca2b6f92891302d3
     </modules>
   </component>
 </project>
