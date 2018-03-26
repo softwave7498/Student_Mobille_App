@@ -110,18 +110,18 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
             {   pend = dataSnapshot.getChildrenCount();
                 for(DataSnapshot credentials:dataSnapshot.getChildren())
                 {
-                        pend = pend -1;
-                        if (status == 0) {
-                            String Number = (String) credentials.child("Mobile_number").getValue();
-                            if (Number.equals(number.getText().toString())) {
-                                Toast.makeText(LoginActivity.this,"success beta",Toast.LENGTH_LONG).show();
-                            }
-                        } else if (status == 2) {
-                            String Number = (String) credentials.child("F_Mobile_number").getValue();
-                            if (Number.equals(number.getText().toString())) {
-                                Toast.makeText(LoginActivity.this,"success papa",Toast.LENGTH_LONG).show();
-                            }
+                    pend = pend -1;
+                    if (status == 0) {
+                        String Number = (String) credentials.child("Mobile_number").getValue();
+                        if (Number.equals(number.getText().toString())) {
+                            Toast.makeText(LoginActivity.this,"success beta",Toast.LENGTH_LONG).show();
                         }
+                    } else if (status == 2) {
+                        String Number = (String) credentials.child("F_Mobile_number").getValue();
+                        if (Number.equals(number.getText().toString())) {
+                            Toast.makeText(LoginActivity.this,"success papa",Toast.LENGTH_LONG).show();
+                        }
+                    }
 
                 }
             }
