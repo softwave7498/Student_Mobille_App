@@ -89,6 +89,10 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_academics:
                 fragment=new academics();
                 break;
+
+            default:
+                fragment=new dashboard();
+                break;
         }
         if(fragment!=null){
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

@@ -2,6 +2,7 @@ package com.example.ankit.navigationdrawer;
 
 import android.content.Context;
 import android.net.Uri;
+import java.text.DateFormat;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,9 +10,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+//import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -27,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class chatting extends Fragment {
@@ -44,7 +48,7 @@ public class chatting extends Fragment {
         View view = inflater.inflate(R.layout.activity_message,container,false);
         messagesList = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        mDataRef = FirebaseDatabase.getInstance().getReference().child("Messages");
+        mDataRef = FirebaseDatabase.getInstance().getReference().child("Messages").child("2").child("CS");
         message = view.findViewById(R.id.message);
         send_btn = view.findViewById(R.id.sendBtn);
         recyclerViewMessages = view.findViewById(R.id.recyclerView);
@@ -69,7 +73,8 @@ public class chatting extends Fragment {
             {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     String message = (String)dataSnapshot1.child("message").getValue();
-                    messagesList.add(new MessageClass(message));
+                    String date = (String)dataSnapshot1.child("date_time").getValue();
+                    messagesList.add(new MessageClass(message,date));
                 }
                 adapter = new MsgAdapter(getContext(),messagesList);
                 recyclerViewMessages.setAdapter(adapter);
@@ -86,9 +91,11 @@ public class chatting extends Fragment {
     private void send_msg() {
         String msg = message.getText().toString();
         String id = databaseReference.push().getKey();
-        MessageClass m = new MessageClass(msg);
-        databaseReference.child("Messages").child(id).setValue(m);
+        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+        MessageClass m = new MessageClass(msg,currentDateTimeString);
+        databaseReference.child("Messages").child("2").child("CS").child(id).setValue(m);
         Toast.makeText(getContext(), "Successful", Toast.LENGTH_SHORT).show();
+        message.setText("");
 
     }
 
